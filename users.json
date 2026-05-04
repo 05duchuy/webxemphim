@@ -13,5 +13,10 @@
     "username": "user2", 
     "password": "123689", 
     "name": "Bạn thân 2" 
+  },
+  { 
+    "username": "duongdu", 
+    "password": "2005", 
+    "name": "Người Nhà" 
   }
 ]
