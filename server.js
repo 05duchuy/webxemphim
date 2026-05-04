@@ -31,7 +31,21 @@ const client = new TelegramClient(stringSession, apiId, apiHash, { connectionRet
 // 1. ĐỊNH NGHĨA CÁC ROUTE TRƯỚC
 app.get('/', (req, res) => res.send("HUY MOVIE API IS RUNNING 🚀"));
 
-app.get('/api/movies', (req, res) => res.json(loadJSON('movies.json')));
+app.get('/api/movies', (req, res) => {
+    let movies = loadJSON('movies.json');
+    const sort = req.query.sort; // Lấy tham số ?sort= từ URL
+
+    if (sort === 'newest') {
+        // 1. Sắp xếp ID lớn nhất lên đầu (Dành cho Trang chủ)
+        movies.sort((a, b) => Number(b.id) - Number(a.id));
+    } else if (sort === 'alphabet') {
+        // 2. Sắp xếp theo bảng chữ cái Tiếng Việt A-Z (Dành cho Kho phim)
+        // localeCompare('vi') xử lý cực chuẩn các chữ Ă, Â, Đ, Ô...
+        movies.sort((a, b) => a.title.localeCompare(b.title, 'vi'));
+    }
+
+    res.json(movies);
+});
 
 app.post('/api/login', (req, res) => {
     const { username, password } = req.body;
