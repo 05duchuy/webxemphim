@@ -1,12 +1,17 @@
 [
   { 
     "username": "admin", 
-    "password": "123", 
+    "password": "123123", 
     "name": "Admin" 
   },
   { 
-    "username": "khach01", 
-    "password": "matkhaucuaban", 
-    "name": "Bạn thân" 
+    "username": "user1", 
+    "password": "123739", 
+    "name": "Bạn thân 1" 
+  },
+  { 
+    "username": "user2", 
+    "password": "123689", 
+    "name": "Bạn thân 2" 
   }
 ]
